@@ -37,5 +37,6 @@ def setup():
         return
     print('Cool! Let\'s get started!')
 
+
 if __name__ == '__main__':
     setup()
