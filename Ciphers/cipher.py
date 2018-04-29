@@ -4,3 +4,8 @@ class Cipher:
 
     def decrypt(self):
         raise NotImplementedError()
+
+    name = ''
+
+    def __str__(self):
+        return self.name.lower()

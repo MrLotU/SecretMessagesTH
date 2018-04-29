@@ -6,6 +6,8 @@ from cipher import Cipher
 class Caesar(Cipher):
     FORWARD = string.ascii_uppercase * 3
 
+    name = 'Caesar'
+
     def __init__(self, offset=3):
         self.offset = offset
         self.FORWARD = string.ascii_uppercase + string.ascii_uppercase[:self.offset+1]
