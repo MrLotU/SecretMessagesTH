@@ -1,15 +1,21 @@
 class Cipher:
+    """Base Cipher class"""
     def encrypt(self):
+        """Encrypt a message"""
         raise NotImplementedError()
 
     def decrypt(self):
+        """Decrypt a message"""
         raise NotImplementedError()
 
     @classmethod
-    def setup(cls, e, d):
+    def setup(cls, e, d, inp):
+        """Setup a cipher for use"""
         raise NotImplementedError()
 
+    ### Name of the cipher
     name = ''
 
     def __str__(self):
+        """Get the name of the Cipher"""
         return self.name.lower()
