@@ -8,6 +8,22 @@ class Caesar(Cipher):
 
     name = 'Caesar'
 
+    @classmethod
+    def setup(cls, e, d):
+        offset = raw_input('Please give me an offset to use with encrypting/decrypting\t')
+        try:
+            offset = int(offset)
+        except ValueError:
+            print('Can\'t convert that to an integer. Try again!')
+            cls.setup(e, d)
+            return
+        cipher = cls(offset=offset)
+
+        enc_or_dec = raw_input('Would you like to \033[4mE\033[0mncrypt or decrypt\t')
+
+        if enc_or_dec.lower().startswith('e') or enc_or_dec == '':
+            e(cipher)
+
     def __init__(self, offset=3):
         self.offset = offset
         self.FORWARD = string.ascii_uppercase + string.ascii_uppercase[:self.offset+1]
