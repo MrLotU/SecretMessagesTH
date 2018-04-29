@@ -22,6 +22,7 @@ class Affine(Cipher):
             print('Can\'t convert that to an integer. Try again!')
             cls.setup(e, d)
             return
+        ### These are all possible values for a. Check if we got a usable input
         possible_a_values = [3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 25]
         if not a in possible_a_values:
             print('a should be one of the following: {}'.format(', '.join(possible_a_values)))
