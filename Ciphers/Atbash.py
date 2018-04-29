@@ -1,5 +1,5 @@
-from cipher import Cipher
-from Affine import Affine
+from Ciphers.cipher import Cipher
+from Ciphers.Affine import Affine
 
 class Atbash(Cipher):
     name = 'Atbash'
@@ -11,7 +11,7 @@ class Atbash(Cipher):
     def setup(cls, e, d):
         cipher = cls()
 
-        enc_or_dec = raw_input('Would you like to \033[4mE\033[0mncrypt or decrypt\t')
+        enc_or_dec = input('Would you like to \033[4mE\033[0mncrypt or decrypt\t')
 
         if enc_or_dec.lower().startswith('e') or enc_or_dec == '':
             e(cipher)

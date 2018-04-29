@@ -1,4 +1,4 @@
-from cipher import Cipher
+from Ciphers.cipher import Cipher
 
 class Affine(Cipher):
     name = 'Affine'
@@ -9,8 +9,8 @@ class Affine(Cipher):
 
     @classmethod
     def setup(cls, e, d):
-        a = raw_input('Please give me an a to use with encrypting/decrypting\t')
-        b = raw_input('Please give me a b to use with encrypting/decrypting\t')
+        a = input('Please give me an a to use with encrypting/decrypting\t')
+        b = input('Please give me a b to use with encrypting/decrypting\t')
         try:
             a = int(a)
             b = int(b)
@@ -25,7 +25,7 @@ class Affine(Cipher):
             return
         cipher = cls(a, b)
 
-        enc_or_dec = raw_input('Would you like to \033[4mE\033[0mncrypt or decrypt\t')
+        enc_or_dec = input('Would you like to \033[4mE\033[0mncrypt or decrypt\t')
 
         if enc_or_dec.lower().startswith('e') or enc_or_dec == '':
             e(cipher)

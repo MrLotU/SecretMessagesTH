@@ -1,6 +1,6 @@
 import string
 
-from cipher import Cipher
+from Ciphers.cipher import Cipher
 
 
 class Caesar(Cipher):
@@ -10,7 +10,7 @@ class Caesar(Cipher):
 
     @classmethod
     def setup(cls, e, d):
-        offset = raw_input('Please give me an offset to use with encrypting/decrypting\t')
+        offset = input('Please give me an offset to use with encrypting/decrypting\t')
         try:
             offset = int(offset)
         except ValueError:
@@ -19,7 +19,7 @@ class Caesar(Cipher):
             return
         cipher = cls(offset=offset)
 
-        enc_or_dec = raw_input('Would you like to \033[4mE\033[0mncrypt or decrypt\t')
+        enc_or_dec = input('Would you like to \033[4mE\033[0mncrypt or decrypt\t')
 
         if enc_or_dec.lower().startswith('e') or enc_or_dec == '':
             e(cipher)
@@ -54,6 +54,3 @@ class Caesar(Cipher):
             else:
                 output.append(self.BACKWARD[index-self.offset])
         return ''.join(output)
-
-
-
