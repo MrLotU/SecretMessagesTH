@@ -1,16 +1,17 @@
-from Ciphers import Caesar, Affine, Atbash, Polybius
+import os
+
+from Ciphers import Affine, Atbash, Caesar, Polybius
 
 WELCOME_MESSAGE = '''
-    Hi there!
+Hi there!
 
-    Welcome to the MrLotU Encryption tool!
+Welcome to the MrLotU Encryption tool!
 
-    To start, please choose a chiper from the list below:
-        1. Caesar
-        2. Affine
-        3. Atbash
-        4. Polybius
-    
+To start, please choose a chiper from the list below:
+    1. Caesar
+    2. Affine
+    3. Atbash
+    4. Polybius
 '''
 
 CIPHERS = {
@@ -21,6 +22,7 @@ CIPHERS = {
 }
 
 def setup():
+    os.system('cls' if os.name == 'nt' else 'clear')
     cipher = raw_input(WELCOME_MESSAGE)
     try:
         cipher = CIPHERS[int(cipher)]

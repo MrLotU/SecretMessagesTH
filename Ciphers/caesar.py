@@ -23,6 +23,8 @@ class Caesar(Cipher):
 
         if enc_or_dec.lower().startswith('e') or enc_or_dec == '':
             e(cipher)
+        else:
+            d(cipher)
 
     def __init__(self, offset=3):
         self.offset = offset

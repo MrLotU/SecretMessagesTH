@@ -6,6 +6,31 @@ class Affine(Cipher):
     def __init__(self, a, b):
         self.a = a
         self.b = b
+
+    @classmethod
+    def setup(cls, e, d):
+        a = raw_input('Please give me an a to use with encrypting/decrypting\t')
+        b = raw_input('Please give me a b to use with encrypting/decrypting\t')
+        try:
+            a = int(a)
+            b = int(b)
+        except ValueError:
+            print('Can\'t convert that to an integer. Try again!')
+            cls.setup(e, d)
+            return
+        possible_a_values = [3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 25]
+        if not a in possible_a_values:
+            print('a should be one of the following: {}'.format(', '.join(possible_a_values)))
+            cls.setup(e, d)
+            return
+        cipher = cls(a, b)
+
+        enc_or_dec = raw_input('Would you like to \033[4mE\033[0mncrypt or decrypt\t')
+
+        if enc_or_dec.lower().startswith('e') or enc_or_dec == '':
+            e(cipher)
+        else:
+            d(cipher)
     
     def alphabet(self):
         alphabet = {}
