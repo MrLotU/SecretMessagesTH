@@ -67,3 +67,5 @@ def finalize():
 
 if __name__ == '__main__':
     setup()
+    # p = Polybius()
+    # print(p.grid)
