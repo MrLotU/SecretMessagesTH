@@ -69,4 +69,8 @@ def finalize():
 if __name__ == '__main__':
     try: input = input
     except NameError: pass
-    setup()
+    try:
+        setup()
+    except KeyboardInterrupt:
+        print('We hope to see you again!')
+        sys.exit(0)
