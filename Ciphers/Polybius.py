@@ -17,7 +17,7 @@ class Polybius(Cipher):
     def setup(cls, e, d, inp, pad):
         """Setup the Polybius Cipher for use"""
         ### Setup pad
-        p = 0
+        p = 1
         if not pad == None:
             for c in pad.upper():
                 p += ord(c)
@@ -45,7 +45,8 @@ class Polybius(Cipher):
             for coord, letter in self.grid.items():
                 if letter == char:
                     x, y = coord
-                    out.append('{}{}'.format(x, y))
+                    joined_coord = int('{}{}'.format(x, y))
+                    out.append('{}'.format(int(joined_coord * self.pad)))
         ### Return the encrypted message
         return ' '.join(out)
     
@@ -54,8 +55,9 @@ class Polybius(Cipher):
         out = []
         ### Get character for each set of coordinates we recieve
         for char in msg.split(' '):
-            x, y = tuple(list(char))
             try:
+                joined_coord = int(char)
+                x, y = tuple(list(str(joined_coord // self.pad)))
                 x = int(x)
                 y = int(y)
             except ValueError:
