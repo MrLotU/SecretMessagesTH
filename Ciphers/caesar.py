@@ -57,6 +57,7 @@ class Caesar(Cipher):
         return ''.join(output)
 
     def decrypt(self, text):
+        """Decrypt a message using the Caesar Cipher"""
         output = []
         ### Uppercase the message
         text = text.upper()
