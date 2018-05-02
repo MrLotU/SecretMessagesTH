@@ -7,7 +7,7 @@ class Atbash(Cipher):
     def __init__(self, pad):
         """Initalize Atbash Cipher"""
         ### The atbash cipher is a special form of the Affine cipher with a = b = (m − 1)
-        ### In our case where m = 26, we can use our Affine Cipher with a = b = 25
+        ### In our case where m = 26 (length of the alphabet), we can use our Affine Cipher with a = b = 25
         self.affine = Affine(25, 25, pad)
 
     @classmethod

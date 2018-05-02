@@ -71,7 +71,7 @@ class Affine(Cipher):
         out = []
         ### Convert each character
         for char in msg:
-            out.append(chr(((self.a * (ord(char) - 65) + self.b) % 26) + 65))
+            out.append(chr(((self.a * (ord(char) - 65) + (self.b * self.pad)) % 26) + 65))
         ### Return encrypted message
         return ''.join(out)
 
@@ -81,6 +81,6 @@ class Affine(Cipher):
         out = []
         ### Convert each character
         for char in msg:
-            out.append(chr((self.modinv() * ((ord(char) - 65) - self.b) % 26) + 65))
+            out.append(chr((self.modinv() * ((ord(char) - 65) - (self.b * self.pad)) % 26) + 65))
         ### Return decrypted message
         return ''.join(out)
