@@ -1,5 +1,6 @@
 import os
 import sys
+from random import randrange, sample
 
 from Ciphers import Affine, Atbash, Caesar, Polybius
 
@@ -81,7 +82,13 @@ def encrypt(cipher):
     """
     msg = input('Okay! Please give me a message to encrypt\t')
     output = cipher.encrypt(msg)
-    print('Your encrypted message is: {}'.format(output))
+    ### Break output up in blocks of 5 characters
+    ### We add a _ in random places as padding
+    output = list(output)
+    while not len(output) % 5 == 0:
+        output.insert(randrange(len(output)+1), '_')
+    out = ' '.join([''.join(output[i:i+5]) for i in range(0, len(output), 5)])
+    print('Your encrypted message is: {}'.format(out))
     finalize()
 
 def decrypt(cipher):
@@ -94,6 +101,9 @@ def decrypt(cipher):
             The cipher to use for decryption.
     """
     msg = input('Okay! Please give me a message to decrypt\t')
+    ### Remove characters added when breaking message up into blocks of 5 characters
+    msg.replace('_', '')
+    msg.replace(' ', '')
     output = cipher.decrypt(msg)
     print('Your decrypted message is: {}'.format(output))
     finalize()
