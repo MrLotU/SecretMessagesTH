@@ -66,8 +66,9 @@ class Affine(Cipher):
     
     def encrypt(self, msg):
         """Encrypt a message using the Affine Cipher"""
-        ### Uppercase the message
+        ### Uppercase the message and remove whitespace
         msg = msg.upper()
+        msg = ''.join(msg.split())
         out = []
         ### Convert each character
         for char in msg:

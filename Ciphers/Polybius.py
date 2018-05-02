@@ -35,8 +35,9 @@ class Polybius(Cipher):
     
     def encrypt(self, msg):
         """Encrypt a message using the Polybius Cipher"""
-        ### Convert the message to all uppercase
+        ### Uppercase the message and remove whitespace
         msg = msg.upper()
+        msg = ''.join(msg.split())
         ### Replace all W's with V's since the W didn't fit in our 5*5 square
         msg = msg.replace('W', 'V')
         out = []

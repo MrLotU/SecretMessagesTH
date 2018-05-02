@@ -44,7 +44,8 @@ class Caesar(Cipher):
     def encrypt(self, text):
         """Encrypt a message using the Caesar Cipher"""
         output = []
-        ### Uppercase the message
+        ### Uppercase the message and remove whitespace
+        text = ''.join(text.split())
         text = text.upper()
         ### Convert every character
         for char in text:
