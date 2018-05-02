@@ -9,7 +9,7 @@ class Cipher:
         raise NotImplementedError()
 
     @classmethod
-    def setup(cls, e, d, inp):
+    def setup(cls, e, d, inp, pad):
         """Setup a cipher for use"""
         raise NotImplementedError()
 

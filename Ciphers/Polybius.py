@@ -4,19 +4,25 @@ class Polybius(Cipher):
     """Class for the Polybius Cipher"""
     name = 'Polybius'
 
-    def __init__(self):
+    def __init__(self, pad):
         ### Create the a grid or type (x, y): character
         self.grid = {
             (x, y): z for (x, y), z in zip(
                 [(1*a, 1*b) for a in range(1, 6) for b in range(1, 6)], 'ABCDEFGHIJKLMNOPQRSTUVXYZ'
             )
         }
+        self.pad = pad
 
     @classmethod
-    def setup(cls, e, d, inp):
+    def setup(cls, e, d, inp, pad):
         """Setup the Polybius Cipher for use"""
+        ### Setup pad
+        p = 0
+        if not pad == None:
+            for c in pad.upper():
+                p += ord(c)
         ### Instantiate cipher
-        cipher = cls()
+        cipher = cls(p)
 
         ### Ask if we want to encrypt or decrypt
         enc_or_dec = inp('Would you like to \033[4mE\033[0mncrypt or decrypt\t')

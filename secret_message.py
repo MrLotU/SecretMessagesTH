@@ -56,9 +56,19 @@ def setup():
         setup()
         return
     print('Cool! Let\'s get started!')
+           
+    ### Ask if we want to use a time pad
+    pad = input('Would you like to use a one time pad to add an extra layer of security? \033[4mY\033[0m/n\t')
+
+    if not pad.lower() in ['y', 'yes', '']:
+        print('Okay, not using pad!')
+        pad_value = None
+    else:
+        ### Instantiate the one time pad
+        pad_value = input('Please give me a string to use as one time pad\t')
 
     ### Setup the cipher for use
-    cipher.setup(encrypt, decrypt, input)
+    cipher.setup(encrypt, decrypt, input, pad_value)
 
 def encrypt(cipher):
     """
@@ -106,5 +116,5 @@ if __name__ == '__main__':
     try:
         setup()
     except KeyboardInterrupt:
-        print('We hope to see you again!')
+        print('\nWe hope to see you again!')
         sys.exit(0)
