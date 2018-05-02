@@ -18,7 +18,7 @@ class Polybius(Cipher):
         """Setup the Polybius Cipher for use"""
         ### Setup pad
         p = 1
-        if not pad == None:
+        if not pad is None:
             for c in pad.upper():
                 p += ord(c)
         ### Instantiate cipher
@@ -32,7 +32,7 @@ class Polybius(Cipher):
             e(cipher)
         else:
             d(cipher)
-    
+
     def encrypt(self, msg):
         """Encrypt a message using the Polybius Cipher"""
         ### Uppercase the message and remove whitespace
@@ -50,7 +50,7 @@ class Polybius(Cipher):
                     out.append('{}'.format(int(joined_coord * self.pad)))
         ### Return the encrypted message
         return ' '.join(out)
-    
+
     def decrypt(self, msg):
         """Decrypt a message using the Polybius Cipher"""
         out = []

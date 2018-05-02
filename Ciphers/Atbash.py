@@ -2,12 +2,14 @@ from Ciphers.cipher import Cipher
 from Ciphers.Affine import Affine
 
 class Atbash(Cipher):
+    """Class for the Atbash Cipher"""
     name = 'Atbash'
 
     def __init__(self, pad):
         """Initalize Atbash Cipher"""
         ### The atbash cipher is a special form of the Affine cipher with a = b = (m − 1)
-        ### In our case where m = 26 (length of the alphabet), we can use our Affine Cipher with a = b = 25
+        ### In our case where m = 26 (length of the alphabet),
+        ### we can use our Affine Cipher with a = b = 25
         self.affine = Affine(25, 25, pad)
 
     @classmethod
@@ -15,7 +17,7 @@ class Atbash(Cipher):
         """Setup Atbash Cipher for use"""
         ### Setup the pad
         p = 0
-        if not pad == None:
+        if not pad is None:
             for c in pad.upper():
                 p += ord(c)
         cipher = cls(p)
@@ -27,7 +29,7 @@ class Atbash(Cipher):
             e(cipher)
         else:
             d(cipher)
-    
+
     def encrypt(self, msg):
         """Encrypt message using Atbash Cipher"""
         ### Return message encrypted by underlying Affine Cipher

@@ -25,15 +25,15 @@ class Affine(Cipher):
             return
         ### These are all possible values for a. Check if we got a usable input
         possible_a_values = [3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 25]
-        if not a in possible_a_values:
+        if a not in possible_a_values:
             print('a should be one of the following: {}'.format(', '.join(possible_a_values)))
             cls.setup(e, d, inp, pad)
             return
         ### Setup the pad
         p = 0
-        if not pad == None:
+        if not pad is None:
             for c in pad.upper():
-                p += ord(c)                
+                p += ord(c)
         ### Instantiate cipher
         cipher = cls(a, b, p)
 
@@ -63,7 +63,7 @@ class Affine(Cipher):
             raise Exception('modular inverse does not exist')
         else:
             return x % 26
-    
+
     def encrypt(self, msg):
         """Encrypt a message using the Affine Cipher"""
         ### Uppercase the message and remove whitespace

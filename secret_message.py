@@ -1,6 +1,6 @@
 import os
 import sys
-from random import randrange, sample
+from random import randrange
 
 from Ciphers import Affine, Atbash, Caesar, Polybius
 
@@ -57,9 +57,11 @@ def setup():
         setup()
         return
     print('Cool! Let\'s get started!')
-           
+
     ### Ask if we want to use a time pad
-    pad = input('Would you like to use a one time pad to add an extra layer of security? \033[4mY\033[0m/n\t')
+    pad = input(
+        'Would you like to use a one time pad to add extra security? \033[4mY\033[0m/n\t'
+    )
 
     if not pad.lower() in ['y', 'yes', '']:
         print('Okay, not using pad!')
@@ -120,8 +122,10 @@ def finalize():
 
 if __name__ == '__main__':
     ### Fix for using python 2
-    try: input = raw_input
-    except NameError: pass
+    try:
+        input = raw_input
+    except NameError:
+        pass
     ### Clean exit
     try:
         setup()

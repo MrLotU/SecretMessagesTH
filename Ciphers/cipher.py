@@ -1,10 +1,10 @@
-class Cipher:
+class Cipher():
     """Base Cipher class"""
-    def encrypt(self):
+    def encrypt(self, msg):
         """Encrypt a message"""
         raise NotImplementedError()
 
-    def decrypt(self):
+    def decrypt(self, msg):
         """Decrypt a message"""
         raise NotImplementedError()
 

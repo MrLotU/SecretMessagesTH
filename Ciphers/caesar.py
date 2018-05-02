@@ -1,5 +1,3 @@
-import string
-
 from Ciphers.cipher import Cipher
 
 
@@ -21,7 +19,7 @@ class Caesar(Cipher):
             offset = 3
         ### Setup pad
         p = 0
-        if not pad == None:
+        if not pad is None:
             for c in pad.upper():
                 p += ord(c)
         ### Instantiate cipher
@@ -41,14 +39,14 @@ class Caesar(Cipher):
         self.offset = offset
         self.pad = pad
 
-    def encrypt(self, text):
+    def encrypt(self, msg):
         """Encrypt a message using the Caesar Cipher"""
         output = []
         ### Uppercase the message and remove whitespace
-        text = ''.join(text.split())
-        text = text.upper()
+        msg = ''.join(msg.split())
+        msg = msg.upper()
         ### Convert every character
-        for char in text:
+        for char in msg:
             index = ord(char) - 65
             index += self.offset + self.pad
             output.append(chr((index % 26) + 65))
@@ -56,13 +54,13 @@ class Caesar(Cipher):
         ### Return encrypted message
         return ''.join(output)
 
-    def decrypt(self, text):
+    def decrypt(self, msg):
         """Decrypt a message using the Caesar Cipher"""
         output = []
         ### Uppercase the message
-        text = text.upper()
+        msg = msg.upper()
         ### Convert every character
-        for char in text:
+        for char in msg:
             index = ord(char) - 65
             index -= self.offset + self.pad
             output.append(chr((index % 26) + 65))
