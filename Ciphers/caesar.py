@@ -50,7 +50,6 @@ class Caesar(Cipher):
             index = ord(char) - 65
             index += self.offset + self.pad
             output.append(chr((index % 26) + 65))
-            print(self.offset, self.pad, index)
         ### Return encrypted message
         return ''.join(output)
 

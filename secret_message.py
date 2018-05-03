@@ -86,11 +86,13 @@ def encrypt(cipher):
     output = cipher.encrypt(msg)
     ### Break output up in blocks of 5 characters
     ### We add a _ in random places as padding
-    output = list(output)
-    while not len(output) % 5 == 0:
-        output.insert(randrange(len(output)+1), '_')
-    out = ' '.join([''.join(output[i:i+5]) for i in range(0, len(output), 5)])
-    print('Your encrypted message is: {}'.format(out))
+    ### We don't do this for the Polybius cipher since it uses it's own formatting
+    if not cipher.name == 'Polybius':
+        output = list(output)
+        while not len(output) % 5 == 0:
+            output.insert(randrange(len(output)+1), '_')
+        output = ' '.join([''.join(output[i:i+5]) for i in range(0, len(output), 5)])
+    print('Your encrypted message is: {}'.format(output))
     finalize()
 
 def decrypt(cipher):
