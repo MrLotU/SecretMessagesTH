@@ -30,7 +30,7 @@ class Affine(Cipher):
             cls.setup(e, d, inp, pad)
             return
         ### Setup the pad
-        p = 0
+        p = 1
         if not pad is None:
             for c in pad.upper():
                 p += ord(c)
